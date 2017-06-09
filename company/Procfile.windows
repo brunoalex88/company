@@ -1,0 +1,1 @@
+term web: java -jar target\dependency\jetty-runner.jar –port 8383 target\*.war
