@@ -1,12 +1,16 @@
 package com.obruno.company.conf;
 
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -17,7 +21,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 public class JPAConfiguration {
-
+	
+	@Autowired Environment environment;
+	
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -31,7 +37,7 @@ public class JPAConfiguration {
 		return em;
 	}
 
-	@Bean
+/*	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
@@ -39,6 +45,20 @@ public class JPAConfiguration {
 		dataSource.setUsername("company");
 		dataSource.setPassword("company");
 		return dataSource;
+	}*/
+	
+	@Bean 
+	public DataSource dataSource() throws URISyntaxException {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		
+		URI dbUrl = new URI(environment.getProperty("DATABASE_URL"));
+		dataSource.setUrl("jdbc:postgresql://" 
+				+ dbUrl.getHost() + ":" 
+				+ dbUrl.getPort() + dbUrl.getPath());
+		dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
+		dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
+		return dataSource;		
 	}
 
 	@Bean
