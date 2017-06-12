@@ -60,7 +60,7 @@ public class JPAConfiguration {
 		dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
 		return dataSource;		
 	}
-
+	
 	@Bean
 	public Properties additionalProperties() {
 		Properties properties = new Properties();
