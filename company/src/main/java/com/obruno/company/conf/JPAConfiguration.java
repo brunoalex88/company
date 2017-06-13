@@ -8,8 +8,8 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -22,8 +22,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class JPAConfiguration {
 	private static final String CLASS_NAME = "JPAConfiguration.";	
-	
-	@Autowired Environment environment;
 	
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
@@ -40,7 +38,8 @@ public class JPAConfiguration {
 		return em;
 	}
 
-/*	@Bean
+	@Bean
+	@Profile("dev")
 	public DataSource dataSource() {
 		System.out.println(CLASS_NAME + "dataSource()");
 		
@@ -50,10 +49,11 @@ public class JPAConfiguration {
 		dataSource.setUsername("company");
 		dataSource.setPassword("company");
 		return dataSource;
-	}*/
+	}
 	
-	@Bean 
-	public DataSource dataSource() throws URISyntaxException {
+	@Bean
+	@Profile("prod")
+	public DataSource dataSource(Environment environment) throws URISyntaxException {
 		System.out.println(CLASS_NAME + "dataSource()");
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
