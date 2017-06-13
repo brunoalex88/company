@@ -1,6 +1,8 @@
 package com.obruno.company.conf;
 
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
@@ -30,12 +32,12 @@ public class JPAConfiguration {
 
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
-		em.setJpaProperties(additionalProperties());
+		//em.setJpaProperties(additionalProperties());
 
 		return em;
 	}
 
-	@Bean
+/*	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
@@ -43,9 +45,9 @@ public class JPAConfiguration {
 		dataSource.setUsername("company");
 		dataSource.setPassword("company");
 		return dataSource;
-	}
+	}*/
 	
-/*	@Bean 
+	@Bean 
 	public DataSource dataSource() throws URISyntaxException {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
@@ -57,7 +59,7 @@ public class JPAConfiguration {
 		dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
 		dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
 		return dataSource;		
-	}*/
+	}
 
 	
 	@Bean
