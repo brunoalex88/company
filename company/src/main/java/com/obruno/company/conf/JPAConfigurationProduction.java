@@ -1,6 +1,8 @@
 package com.obruno.company.conf;
 
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
@@ -8,6 +10,7 @@ import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -17,8 +20,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
-@Profile("dev")
-public class JPAConfiguration {
+@Profile("prod")
+public class JPAConfigurationProduction {
 	private static final String CLASS_NAME = "JPAConfiguration.";	
 	
 	@Bean
@@ -35,17 +38,21 @@ public class JPAConfiguration {
 
 		return em;
 	}
-
+	
 	@Bean
-	public DataSource dataSource() {
+	public DataSource dataSource(Environment environment) throws URISyntaxException {
 		System.out.println(CLASS_NAME + "dataSource()");
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		dataSource.setUrl("jdbc:oracle:thin:@127.0.0.1:1521:xe");
-		dataSource.setUsername("company");
-		dataSource.setPassword("company");
-		return dataSource;
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		
+		URI dbUrl = new URI(environment.getProperty("DATABASE_URL"));
+		dataSource.setUrl("jdbc:postgresql://" 
+				+ dbUrl.getHost() + ":" 
+				+ dbUrl.getPort() + dbUrl.getPath());
+		dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
+		dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
+		return dataSource;		
 	}
 	
 	@Bean
@@ -54,7 +61,6 @@ public class JPAConfiguration {
 		
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.hbm2ddl.auto", "create");
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
 		properties.setProperty("hibernate.show_sql", "true");
 		properties.setProperty("hibernate.format_sql", "true");
 		return properties;
