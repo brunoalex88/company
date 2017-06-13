@@ -1,6 +1,8 @@
 package com.obruno.company.conf;
 
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
@@ -38,7 +40,7 @@ public class JPAConfiguration {
 		return em;
 	}
 
-	@Bean
+/*	@Bean
 	public DataSource dataSource() {
 		System.out.println(CLASS_NAME + "dataSource()");
 		
@@ -48,9 +50,9 @@ public class JPAConfiguration {
 		dataSource.setUsername("company");
 		dataSource.setPassword("company");
 		return dataSource;
-	}
+	}*/
 	
-/*	@Bean 
+	@Bean 
 	public DataSource dataSource() throws URISyntaxException {
 		System.out.println(CLASS_NAME + "dataSource()");
 		
@@ -64,7 +66,7 @@ public class JPAConfiguration {
 		dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
 		dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
 		return dataSource;		
-	}*/
+	}
 	
 	@Bean
 	public Properties additionalProperties() {
