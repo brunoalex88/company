@@ -8,6 +8,7 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
@@ -22,7 +23,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @Profile("prod")
 public class JPAConfigurationProduction {
-	private static final String CLASS_NAME = "JPAConfiguration.";	
+	private static final String CLASS_NAME = "JPAConfigurationProduction.";
+	
+	@Autowired
+	private Environment environment;
 	
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
@@ -40,16 +44,14 @@ public class JPAConfigurationProduction {
 	}
 	
 	@Bean
-	public DataSource dataSource(Environment environment) throws URISyntaxException {
+	public DataSource dataSource() throws URISyntaxException {
 		System.out.println(CLASS_NAME + "dataSource()");
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		
 		URI dbUrl = new URI(environment.getProperty("DATABASE_URL"));
-		dataSource.setUrl("jdbc:postgresql://" 
-				+ dbUrl.getHost() + ":" 
-				+ dbUrl.getPort() + dbUrl.getPath());
+		
+		dataSource.setUrl("jdbc:postgresql://" + dbUrl.getHost() + ":" + dbUrl.getPort() + dbUrl.getPath());
 		dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
 		dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
 		return dataSource;		
@@ -63,6 +65,7 @@ public class JPAConfigurationProduction {
 		properties.setProperty("hibernate.hbm2ddl.auto", "create");
 		properties.setProperty("hibernate.show_sql", "true");
 		properties.setProperty("hibernate.format_sql", "true");
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 		return properties;
 	}
 
