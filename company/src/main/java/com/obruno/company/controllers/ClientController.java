@@ -18,17 +18,21 @@ import com.obruno.company.models.Client;
 @Transactional
 @RequestMapping("/client")
 public class ClientController {
-
+	private static final String CLASS_NAME = "ClientController.";
+	
 	@Autowired
 	private ClientDAO clientDAO;
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView add(Client client) {
+		System.out.println(CLASS_NAME + "add(Client client)");
 		return new ModelAndView("/client/add");
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView save(@Valid Client client, BindingResult result, RedirectAttributes redirectAttributes) {
+		System.out.println(CLASS_NAME + "save(@Valid Client client, BindingResult result, RedirectAttributes redirectAttributes)");
+		
 		if (result.hasErrors())
 			return add(client);
 		

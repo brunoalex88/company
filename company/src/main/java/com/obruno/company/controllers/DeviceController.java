@@ -26,7 +26,8 @@ import com.obruno.company.models.Type;
 @Transactional
 @RequestMapping("/device")
 public class DeviceController {
-
+	private static final String CLASS_NAME = "DeviceController.";
+	
 	@Autowired
 	DeviceDAO deviceDAO;
 	
@@ -38,11 +39,13 @@ public class DeviceController {
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
+		System.out.println(CLASS_NAME + "initBinder(WebDataBinder binder)");
 		binder.registerCustomEditor(Client.class, clientEditor);
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView add(Device device) {
+		System.out.println(CLASS_NAME + "add(Device device)");
 		List<Client> clients = clientDAO.list();
 		
 		ModelAndView modelAndView = new ModelAndView("/device/add");
@@ -54,6 +57,7 @@ public class DeviceController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView save(@Valid Device device, 
 			BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+		System.out.println(CLASS_NAME + "save(@Valid Device device, BindingResult bindingResult, RedirectAttributes redirectAttributes)");
 		
 		if (bindingResult.hasErrors()) {
 			System.out.println(bindingResult);
@@ -67,6 +71,8 @@ public class DeviceController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
+		System.out.println(CLASS_NAME + "list()");
+		
 		ModelAndView modelAndView = new ModelAndView("/device/list");
 		modelAndView.addObject("devices", deviceDAO.list());
 		return modelAndView;

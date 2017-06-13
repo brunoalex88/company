@@ -14,12 +14,15 @@ import com.obruno.company.models.Usuario;
 
 @Repository
 public class UsuarioDAO implements UserDetailsService {
-
+	private static final String CLASS_NAME = "UsuarioDAO.";
+	
 	@PersistenceContext
 	private EntityManager em;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		System.out.println(CLASS_NAME + "loadUserByUsername(String username)");
+		
 		String jpql = "select u from Usuario u where u.login = :login";
 		
 		List<Usuario> usuarios = em.createQuery(jpql, Usuario.class)

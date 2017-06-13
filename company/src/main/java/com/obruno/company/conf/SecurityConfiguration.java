@@ -12,9 +12,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
-
+	private static final String CLASS_NAME = "SecurityConfiguration.";	
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		System.out.println(CLASS_NAME + "configure(HttpSecurity http)");
+		
 		http.authorizeRequests()
 		.antMatchers("/company").hasRole("ADMIN")
 		.antMatchers("/company/**").hasAnyRole("ADMIN")
@@ -31,11 +34,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)
 			throws Exception {
+		System.out.println(CLASS_NAME + "configure(AuthenticationManagerBuilder auth)");
 		auth.userDetailsService(users).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
+		System.out.println(CLASS_NAME + "configure(WebSecurity web)");
 		web.ignoring().antMatchers("/resources/**");
 	}
 	

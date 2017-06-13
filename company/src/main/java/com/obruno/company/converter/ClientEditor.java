@@ -10,12 +10,15 @@ import com.obruno.company.models.Client;
 
 @Component
 public class ClientEditor extends PropertyEditorSupport {
-
+	private static final String CLASS_NAME = "ClientEditor.";
+	
 	@Autowired
 	ClientDAO clientDAO;
 	
 	@Override
 	public void setAsText(String text) throws IllegalArgumentException {
+		System.out.println(CLASS_NAME + "setAsText(String text)");
+		
 		Client client = clientDAO.getById(text);
 		this.setValue(client);
 		return;

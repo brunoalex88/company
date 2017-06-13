@@ -14,9 +14,12 @@ import com.obruno.company.daos.ClientDAO;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.obruno.company")
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
-
+	private static final String CLASS_NAME = "AppWebConfiguration.";
+	
 	@Bean
 	public InternalResourceViewResolver internalResourceViewResolver() {
+		System.out.println(CLASS_NAME + "internalResourceViewResolver()");
+		
 		InternalResourceViewResolver resolver = 
 				new InternalResourceViewResolver();
 		
@@ -27,6 +30,8 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Bean
 	public MessageSource messageSource() {
+		System.out.println(CLASS_NAME + "messageSource()");
+		
 		ReloadableResourceBundleMessageSource bundleMessageSource =
 				new ReloadableResourceBundleMessageSource();
 		
@@ -38,6 +43,7 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		System.out.println(CLASS_NAME + "addResourceHandlers()");
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 	
