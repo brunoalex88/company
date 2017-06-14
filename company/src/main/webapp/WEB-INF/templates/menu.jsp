@@ -3,14 +3,14 @@
     <li><a href="/">Home</a></li> 
     <li><a href="#">Client</a> 
       <ul> 
-        <li><a href="<c:url value="client/add" />">Add</a></li> 
+        <li><a href="<c:url value="/client/add" />">Add</a></li> 
         <li><a href="company/client/list">List</a></li>  
       </ul> 
     </li>
     <li><a href="#">Device</a>
       <ul> 
-        <li><a href="<c:url value="device/add" />">Add</a></li> 
-        <li><a href="<c:url value="device/list" />">List</a></li>  
+        <li><a href="<c:url value="/device/add" />">Add</a></li> 
+        <li><a href="<c:url value="/device/list" />">List</a></li>  
       </ul> 
     </li>
     <li>

@@ -13,7 +13,7 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView login() {
 		System.out.println(CLASS_NAME + "login()");
-		return new ModelAndView("login");
+		return new ModelAndView("/login");
 	}
 	
 }
