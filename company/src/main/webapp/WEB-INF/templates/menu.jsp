@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <ul> 
-    <li><a href="/">Home</a></li> 
+    <li><a href="<c:url value="/" />">Home</a></li> 
     <li><a href="#">Client</a> 
       <ul> 
         <li><a href="<c:url value="/client/add" />">Add</a></li> 
