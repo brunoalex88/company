@@ -10,7 +10,7 @@
 
 <tags:template textHeader="${textHeader}" title="${title}">
 
-	<div class="home-body">
+<%-- 	<div class="home-body">
 		<a href="<c:url value="/device/add" />" class="button hvr-shutter-in-vertical">
 			<fmt:message key="home.device.add" />
 		</a>
@@ -26,6 +26,6 @@
 		<a href="<c:url value="/device/list" />" class="button hvr-shutter-in-vertical">
 			<fmt:message key="home.device.list" />
 		</a>
-	</div>
+	</div> --%>
 	
 </tags:template>
