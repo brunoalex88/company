@@ -35,5 +35,9 @@ public class UsuarioDAO implements UserDetailsService {
 		return usuarios.get(0);
 		
 	}
+	
+	public void add(Usuario usuario) {
+		em.persist(usuario);
+	}
 		
 }

@@ -48,7 +48,7 @@ public class DeviceController {
 		System.out.println(CLASS_NAME + "add(Device device)");
 		List<Client> clients = clientDAO.list();
 		
-		ModelAndView modelAndView = new ModelAndView("/add");
+		ModelAndView modelAndView = new ModelAndView("/device/add");
 		modelAndView.addObject("types", Type.values());
 		modelAndView.addObject("clientes", clients);
 		return modelAndView;

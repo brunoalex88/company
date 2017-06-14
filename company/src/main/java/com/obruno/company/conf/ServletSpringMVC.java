@@ -20,7 +20,8 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 	protected Class<?>[] getRootConfigClasses() {
 		System.out.println(CLASS_NAME + "getRootConfigClasses()");
 		return new Class[] {SecurityConfiguration.class,
-				AppWebConfiguration.class, JPAConfiguration.class, JPAConfigurationProduction.class}; 
+				AppWebConfiguration.class, JPAConfiguration.class, 
+				JPAConfigurationProduction.class}; 
 	}
 
 	@Override
