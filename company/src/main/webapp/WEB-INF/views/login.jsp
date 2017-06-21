@@ -4,85 +4,80 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
+	<head>		
 		<title><fmt:message key="login.titulo" /></title>
-		
-		<style type="text/css">
-			table.center {		
-			    position: absolute;
-			    top: 30%;
-			    left: 50%;
-			    transform: translateX(-50%) translateY(-50%);
-			}				
-		</style>
-		
+		<link rel="stylesheet" href="<c:url value="/resources/css/login.css" />" />
 	</head>
 
-<form:form servletRelativeAction="/login">
-	<div id="tableContainer1">
-		<div id="tableContainer2">
-		
+	<body>
+		<form:form servletRelativeAction="/login">
 			<c:if test="${param.error ne null}">
 				<div class="error">
 				    Your login attempt was not successful, try again.<br />
 				    Reason: ${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}
 				</div>
 			</c:if>
-		
-			<table class="center">
-				<tr>
-					<td colspan="3">
-						<img alt="Logo" src="<c:url value="/resources/images/logo.png" />" />						
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="username"><fmt:message key="login.usuario" /></label>
-					</td>
-					<td>
-						<label for="password"><fmt:message key="login.senha" /></label>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="username" value="" id="username" />			
-					</td>
-					<td>
-						<input type="password" name="password" value="" id="password" />			
-					</td>
-					<td>
-						<input name="submit" type="submit" value='<fmt:message key="login.login" />' 
-							onclick="return validate();"/>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-
-</form:form>
-
-<script type="text/javascript">
-	function validate() {
-	    if (document.getElementById("username").value == "" && document.getElementById("password").value == "") {
-	        alert("Usuário e senha são obrigatórios");
-	        document.getElementById("username").focus();
-	        return false;
-	    }
-	    
-	    if (document.getElementById("password").value == "") {
-	    	alert("Senha é obrigatória");
-	    }
-	    
-	    if (document.getElementById("username").value == "") {
-	    	alert("Usuário é oberigatório")
-	    }
-	    
-	}
+			
+			<div class="container">
+				
+				<form:form servletRelativeAction="/login">
+					<img alt="Company Logo" src="<c:url value="/resources/images/logo.png" />">
+					<p />
+					
+					<table>
+						<tr>
+							<td>
+								<label for="username">
+									<fmt:message key="login.usuario" />
+								</label>
+							</td>
+							<td>
+								<input type="text" name="username" value="" id="username" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="password">
+									<fmt:message key="login.senha" />
+								</label>
+							</td>
+							<td>
+								<input type="password" name="password" value="" id="password" />
+							</td>
+						</tr>
 	
-	window.onload = function() {
-	  document.getElementById("username").focus();
-	};
-</script>
-
+					</table>
+					
+					<input name="submit" type="submit" value='<fmt:message key="login.login" />' 
+									onclick="return validate();"/>
+				</form:form>
+			</div>
+									
+		</form:form>
+		
+		<script type="text/javascript">
+			function validate() {
+			    if (document.getElementById("username").value == "" && document.getElementById("password").value == "") {
+			        alert("Usuário e senha são obrigatórios");
+			        document.getElementById("username").focus();
+			        return false;
+			    }
+			    
+			    if (document.getElementById("password").value == "") {
+			    	alert("Senha é obrigatória");
+			    }
+			    
+			    if (document.getElementById("username").value == "") {
+			    	alert("Usuário é oberigatório")
+			    }
+			    
+			}
+			
+			window.onload = function() {
+			  document.getElementById("username").focus();
+			};
+		</script>
+	
+	</body>
 
 </html>

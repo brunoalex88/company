@@ -10,45 +10,43 @@
 	
 	${sucesso}
 	
-	<div class="table">
-		<form:form servletRelativeAction="/company/client/" method="post" commandName="client">
+	<form:form servletRelativeAction="/company/client/" method="post" commandName="client">
+		
+		<table class="container-body">
+			<tr>
+				<td>
+					<fmt:message key="client.add.nome" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form:input path="nome" size="50" />
+				</td>
+				<td>
+					<form:errors path="nome" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<fmt:message key="client.add.cpf" />
+				</td>
+			</tr> 
+			<tr>
+				<td>
+					<form:input path="cpf" />
+				</td>
+				<td>
+					<form:errors path="cpf" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value="<fmt:message key="client.add.submit" />" />
+				</td>
+			</tr>
 			
-			<table>
-				<tr>
-					<td class="top">
-						<fmt:message key="client.add.nome" />
-					</td>
-				</tr>
-				<tr>
-					<td class="border-color">
-						<form:input path="nome" size="50" />
-					</td>
-					<td>
-						<form:errors path="nome" />
-					</td>
-				</tr>
-				<tr>
-					<td class="top">
-						<fmt:message key="client.add.cpf" />
-					</td>
-				</tr> 
-				<tr>
-					<td class="border-color">
-						<form:input path="cpf" />
-					</td>
-					<td>
-						<form:errors path="cpf" />
-					</td>
-				</tr>
-				<tr>
-					<td class="top">
-						<input type="submit" value="<fmt:message key="client.add.submit" />" />
-					</td>
-				</tr>
-				
-			</table>
-			
-		</form:form>
-	</div>
+		</table>
+		
+	</form:form>
 	
 </tags:template>

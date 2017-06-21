@@ -1,0 +1,28 @@
+body {
+	color: #333333;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	width: 940px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10%;
+}
+
+.container {
+	text-align: center;
+}
+
+img {
+	width: 400px;
+	clear: both;
+	margin-bottom: 40px;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input[type="submit"] {
+	margin-top: 20px;
+	width: 100px;
+}

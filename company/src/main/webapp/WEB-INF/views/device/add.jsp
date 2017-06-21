@@ -13,55 +13,53 @@
 		
 	<form:form action="/company/device" method="post" commandName="device">
 	
-		<div class=table>
-			<table>
-				<tr>
-					<td class="top"><label for="name"><fmt:message key="device.add.name" /></label></td>
+		<table class="container-body">
+			<tr>
+				<td><label for="name"><fmt:message key="device.add.name" /></label></td>
+			</tr>
+			<tr>
+				<td>
+					<form:input path="name" size="50" cssClass="border" />
+				</td>
+			</tr>
+			<tr>
+				<td><form:errors path="name" /></td>
+			</tr>
+			<tr>
+				<td>
+					<fmt:message key="device.add.type" /></td>
 				</tr>
-				<tr>
-					<td class="border-color">
-						<form:input path="name" size="50" cssClass="border" />
-					</td>
-				</tr>
-				<tr>
-					<td><form:errors path="name" /></td>
-				</tr>
-				<tr>
-					<td class="top">
-						<fmt:message key="device.add.type" /></td>
-					</tr>
-				<tr>
-					<td class="border">
-						<form:radiobuttons path="type" items="${types}" itemLabel="tipo" cssStyle=""/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<form:errors path="type" />
-					</td>
-				</tr>
-				<tr>
-					<td class="top">
-						<fmt:message key="device.add.cliente" />
-					</td>
-				</tr>				
-				<tr>
-					<td> 
-						<form:select path="client" items="${clientes}" 
-							itemLabel="nome" cssStyle="width: 380px; font-size: 15px;"
-							itemValue="id"  />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<form:errors path="client" />
-					</td>
-				</tr>
-				<tr>
-					<td class="top"><input type="submit" value='<fmt:message key="device.add.submit" />' /></td>
-				</tr>	
-			</table>
-		</div>
+			<tr>
+				<td class="td-border">
+					<form:radiobuttons path="type" items="${types}" itemLabel="tipo" cssStyle=""/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form:errors path="type" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<fmt:message key="device.add.cliente" />
+				</td>
+			</tr>				
+			<tr>
+				<td> 
+					<form:select path="client" items="${clientes}" 
+						itemLabel="nome" cssStyle="width: 380px; font-size: 15px;"
+						itemValue="id"  />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form:errors path="client" />
+				</td>
+			</tr>
+			<tr>
+				<td><input type="submit" value='<fmt:message key="device.add.submit" />' /></td>
+			</tr>	
+		</table>
 		
 	</form:form>
 </tags:template>

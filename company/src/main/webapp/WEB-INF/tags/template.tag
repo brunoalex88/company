@@ -11,22 +11,19 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link rel="stylesheet" href="<c:url value="/resources/css/styles.css" />" /> 
-		<link rel="stylesheet" href="<c:url value="/resources/css/hover.css" />" />
+		<link rel="stylesheet" href="<c:url value="/resources/css/template.css" />" /> 
 		<title>${title}</title>
 	</head>
 
 	<body> 
-		<div id="pageheader">
+		<div id="page-header">
 			<jsp:include page="/WEB-INF/templates/header.jsp" />
 		</div>
 		<div id="body">
 			<jsp:include page="/WEB-INF/templates/menu.jsp" />				
 			<jsp:doBody/>
 		</div>
-		<div id="pagefooter">
+		<div id="page-footer">
 			<jsp:include page="/WEB-INF/templates/footer.jsp" />
 		</div>
 		
