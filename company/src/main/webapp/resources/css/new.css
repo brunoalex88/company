@@ -108,7 +108,7 @@ input[id="add"] {
 	}
 	
 	.menu {
-		flex-direction: row;
+		flex-direction: row; 
 	}
 	
 	input[id="add"] {
