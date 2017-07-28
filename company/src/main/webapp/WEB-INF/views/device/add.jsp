@@ -13,13 +13,13 @@
 		
 	<form:form action="/company/device" method="post" commandName="device">
 	
-		<table class="container-body">
+		<table class="container">
 			<tr>
-				<td><label for="name"><fmt:message key="device.add.name" /></label></td>
+				<td><fmt:message key="device.add.name" /></td>
 			</tr>
 			<tr>
 				<td>
-					<form:input path="name" size="50" cssClass="border" />
+					<form:input path="name" />
 				</td>
 			</tr>
 			<tr>
@@ -31,7 +31,7 @@
 				</tr>
 			<tr>
 				<td class="td-border">
-					<form:radiobuttons path="type" items="${types}" itemLabel="tipo" cssStyle=""/>
+					<form:radiobuttons path="type" items="${types}" itemLabel="tipo" />
 				</td>
 			</tr>
 			<tr>
@@ -47,8 +47,7 @@
 			<tr>
 				<td> 
 					<form:select path="client" items="${clientes}" 
-						itemLabel="nome" cssStyle="width: 380px; font-size: 15px;"
-						itemValue="id"  />
+						itemLabel="nome" itemValue="id"  />
 				</td>
 			</tr>
 			<tr>

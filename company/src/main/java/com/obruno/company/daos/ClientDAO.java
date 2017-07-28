@@ -40,7 +40,6 @@ public class ClientDAO {
 		
 		Client c = query.setParameter("id", Integer.parseInt(id)).getSingleResult();
 		return c;
-		
 	}
 	
 }

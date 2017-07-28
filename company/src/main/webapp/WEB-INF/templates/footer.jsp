@@ -1,1 +1,1 @@
-${textFooter}
+<%-- ${textFooter} --%>

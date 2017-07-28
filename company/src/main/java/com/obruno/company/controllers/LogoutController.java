@@ -11,8 +11,8 @@ public class LogoutController {
 	private static final String CLASS_NAME = "LogoutController.";
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView login() {
-		System.out.println(CLASS_NAME + "login()");
+	public ModelAndView logout() {
+		System.out.println(CLASS_NAME + "logout()");
 		return new ModelAndView("/logout");
 	}
 	

@@ -10,17 +10,23 @@
 
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width">
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="<c:url value="/resources/css/template.css" />" /> 
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Slab:400,700|Pacifico' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="<c:url value="/resources/css/normalize.css" />" />
+		<link rel="stylesheet" href="<c:url value="/resources/css/new.css" />" />
+		<script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/resources/js/jquery.inputmask.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/resources/js/clientadd.js" />"></script>
 		<title>${title}</title>
 	</head>
 
 	<body> 
 		<div id="page-header">
 			<jsp:include page="/WEB-INF/templates/header.jsp" />
+			<jsp:include page="/WEB-INF/templates/menu.jsp" />
 		</div>
 		<div id="body">
-			<jsp:include page="/WEB-INF/templates/menu.jsp" />				
 			<jsp:doBody/>
 		</div>
 		<div id="page-footer">

@@ -36,13 +36,25 @@ public class JPAConfiguration {
 		return em;
 	}
 
-	@Bean
+/*	@Bean
 	public DataSource dataSource() {
 		System.out.println(CLASS_NAME + "dataSource()");
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
 		dataSource.setUrl("jdbc:oracle:thin:@127.0.0.1:1521:xe");
+		dataSource.setUsername("company");
+		dataSource.setPassword("company");
+		return dataSource;
+	}*/
+	
+		@Bean
+	public DataSource dataSource() {
+		System.out.println(CLASS_NAME + "dataSource()");
+		
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		dataSource.setUrl("jdbc:postgresql://localhost/company");
 		dataSource.setUsername("company");
 		dataSource.setPassword("company");
 		return dataSource;
@@ -53,8 +65,8 @@ public class JPAConfiguration {
 		System.out.println(CLASS_NAME + "additionalProperties()");
 		
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", "update");
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+		properties.setProperty("hibernate.hbm2ddl.auto", "create");
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 		properties.setProperty("hibernate.show_sql", "true");
 		properties.setProperty("hibernate.format_sql", "true");
 		properties.setProperty("hibernate.hbm2ddl.import_files", "data.sql");
